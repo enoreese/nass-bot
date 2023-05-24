@@ -1,0 +1,9 @@
+documents.json
+
+nassbot_app/.env
+
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+__pycache__
+
+.vscode
