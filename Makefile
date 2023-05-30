@@ -17,7 +17,7 @@ discord_bot: environment ## run the Discord bot server locally
 	@echo "###"
 	@echo "# 🥞: Assumes you've set up your bot and deployed the backend on Modal"
 	@echo "###"
-	python run_bot.py
+	python nassbot_app/run_bot.py
 
 backend: modal_auth ## deploy the Q&A backend on Modal
 	@echo "###"
@@ -32,22 +32,28 @@ cli_query: modal_auth ## run a query via a CLI interface
 	@echo "###"
 	@echo "# 🥞: Assumes you've set up the vector storage"
 	@echo "###"
-	modal run app.py::stub.cli --query "${QUERY}"
+	modal run nassbot_app/app.py::stub.cli --query "${QUERY}"
 
 vector_index: modal_auth ## sets up a FAISS vector index to the application
 	@echo "###"
 	@echo "# 🥞: Assumes you've set up the document storage"
 	@echo "###"
-	modal run app.py::stub.sync_vector_db_to_doc_db
+	modal run nassbot_app/app.py::stub.sync_vector_db_to_doc_db
 
-document_store: dev_environment ## updates a MongoDB document store to contain the document corpus
+document_store: modal_auth ## updates a MongoDB document store to contain the document corpus
 	@echo "###"
 	@echo "# 🥞: Assumes you've set up a MongoDB cluster with a database named 'fsdl'"
 	@echo "###"
-	jupyter nbconvert --to notebook --execute "Building the FSDL Corpus.ipynb"
+	modal run etl/scrape_webpage.py::stub.main
+
+pdf_store: modal_auth ## updates a MongoDB document store to contain the document corpus
+	@echo "###"
+	@echo "# 🥞: Assumes you've set up a MongoDB cluster with a database named 'fsdl'"
+	@echo "###"
+	modal run etl/scrape_webpage.py::stub.download_pdfs
 
 debugger: modal_auth ## starts a debugger running in our container but accessible via the terminal
-	modal run app.py::stub.debug
+	modal run nassbot_app/app.py::stub.debug
 
 modal_auth: environment ## confirms authentication with Modal, using secrets from `.env` file
 	@echo "###"

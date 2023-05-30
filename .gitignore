@@ -1,6 +1,8 @@
 documents.json
 
 nassbot_app/.env
+etl/.env
+.env
 
 .ipynb_checkpoints/
 *.nbconvert.ipynb

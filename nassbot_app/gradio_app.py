@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from utils.modal_utils import stub, image
 from utils.utils import vector_storage, VECTOR_DIR
-from chains.qanda_langchain import qanda_langchain
+from chains.qa_chain import qanda_langchain
 
 import modal
 import gradio as gr
