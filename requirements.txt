@@ -1,0 +1,8 @@
+python-dotenv==0.21.0
+py-cord==2.3.2
+modal-client~=0.45
+boto3~=1.26.139
+requests~=2.31.0
+pandas~=2.0.1
+pymongo~=4.3.3
+beautifulsoup4~=4.12.2
