@@ -12,11 +12,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MODAL_USER_NAME = os.environ["MODAL_USER_NAME"]
-BACKEND_URL = f"https://{MODAL_USER_NAME}--ask-fsdl-hook.modal.run"
+BACKEND_URL = f"https://{MODAL_USER_NAME}--nass-bot-hook.modal.run"
 
 guild_ids = {
-    "dev": 1070516629328363591,
-    "prod": 984525101678612540,
+    "dev": os.environ["DISCORD_DEV_ID"],
+    "prod": os.environ["DISCORD_PROD_ID"],
 }
 
 START, END = "\033[1;36m", "\033[0m"

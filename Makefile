@@ -23,7 +23,7 @@ backend: modal_auth ## deploy the Q&A backend on Modal
 	@echo "###"
 	@echo "# 🥞: Assumes you've set up the vector index"
 	@echo "###"
-	modal deploy app.py
+	modal deploy nassbot_app/app.py
 	@echo "###"
 	@echo "# 🥞: Gradio interface available at /gradio route"
 	@echo "###"
