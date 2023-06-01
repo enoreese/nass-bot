@@ -82,7 +82,7 @@ def get_doc_from_mongo():
 
 @stub.function(
     image=image,
-    timeout=14400,
+    timeout=500,
     shared_volumes={
         str(VECTOR_DIR): vector_storage,
     },
@@ -126,10 +126,6 @@ def sync_vector_db_to_doc_db():
     embeddings = vector_store.multi_encode_texts(texts)
 
     utils.pretty_log(f"sending {len(embeddings)} total instances to vector store {vecstore.INDEX_NAME}")
-    vector_index = vector_store.add_embedding(texts, embeddings, ids, metadatas)
-    # vector_index = vector_store.create_vector_index(
-    #     documents=texts, ids=ids, metadatas=metadatas
-    # )
     utils.pretty_log(f"vector store created")
 
 

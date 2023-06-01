@@ -45,8 +45,8 @@ def qanda_langchain(query: str, request_id=None, with_logging=False) -> str:
 
     if with_logging:
         print(answer)
-        utils.pretty_log("logging results to gantry")
-        record_key = utils.log_event(query, sources, answer, request_id=request_id)
-        utils.pretty_log(f"logged to gantry with key {record_key}")
+        # utils.pretty_log("logging results to gantry")
+        # record_key = utils.log_event(query, sources, answer, request_id=request_id)
+        # utils.pretty_log(f"logged to gantry with key {record_key}")
 
     return answer

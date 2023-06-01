@@ -128,7 +128,7 @@ class FaissVectorStore:
     def add_embedding(self, texts, embeddings, ids, metadatas):
         from langchain import FAISS
 
-        self.wipe_index()
+        self.wipe_index()  # If index already exists, wipe it
         text_embedding_pairs = list(zip(texts, embeddings))
         index = FAISS.from_embeddings(
             text_embeddings=text_embedding_pairs, embedding=self.lang_embedding_engine, metadatas=metadatas, ids=ids
