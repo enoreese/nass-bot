@@ -71,10 +71,10 @@ def main(auth, guilds, dev=False):
     # add our command
     @bot.slash_command(name="ask")
     @discord.option(
-        "question", str, description="A question about anything covered by FSDL."
+        "question", str, description="A question about anything in the National Assembly Corpus."
     )
     async def answer(ctx, question: str):
-        """Answers questions about FSDL material."""
+        """Answers questions about National Assembly corpus."""
 
         respondent = ctx.author
 
